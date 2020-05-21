@@ -1,4 +1,5 @@
 const app = require("express")();
+const bodyParser = require("body-parser");
 const { scrapeRecipe } = require("./scrapper");
 
 //parse application/x-www-form-urlencoded
