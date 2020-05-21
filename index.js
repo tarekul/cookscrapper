@@ -1,6 +1,11 @@
 const app = require("express")();
 const { scrapeRecipe } = require("./scrapper");
 
+//parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }));
+//parse application/json
+app.use(bodyParser.json());
+
 app.get("/", async (req, res) => {
   const { web_url } = req.body;
   const result = await scrapeRecipe(web_url);
