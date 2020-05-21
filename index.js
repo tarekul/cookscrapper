@@ -10,7 +10,10 @@ app.get("/", async (req, res) => {
 
   const { ingredients, steps } = result;
 
-  res.json(result);
+  res.json(result).catch(err => {
+    console.error(err);
+    res.status(500).json({ error: err.code });
+  });
 });
 
 app.listen(process.env.PORT || 5001, () => {
