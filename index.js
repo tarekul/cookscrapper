@@ -15,11 +15,12 @@ app.use(function(req, res, next) {
   // Website you wish to allow to connect
   res.header("Access-Control-Allow-Origin", "*");
 
+  res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
+
   res.header(
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept, Authorization"
   );
-  res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
 
   // Pass to next layer of middleware
   next();
@@ -37,6 +38,10 @@ app.get("/", async (req, res) => {
     console.error(err);
     res.status(500).json({ error: err.code });
   });
+});
+
+app.get("/idk", (req, res) => {
+  res.json({ idk: "idk" });
 });
 
 app.listen(process.env.PORT || 5001, () => {
