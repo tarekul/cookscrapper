@@ -2,9 +2,8 @@ const app = require("express")();
 const { scrapeRecipe } = require("./scrapper");
 
 app.get("/", async (req, res) => {
-  const result = await scrapeRecipe(
-    "https://cooking.nytimes.com/recipes/1017936-chicken-tacos-with-chipotle?action=click&module=Global%20Search%20Recipe%20Card&pgType=search&rank=13"
-  );
+  const { web_url } = req.body;
+  const result = await scrapeRecipe(web_url);
   if (!result.valid)
     return res.status(500).json({ error: "Failed to retrieve info" });
 
