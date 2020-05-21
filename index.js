@@ -10,21 +10,7 @@ app.use(bodyParser.json());
 
 const cors = require("cors");
 app.use(cors());
-
-app.use(function(req, res, next) {
-  // Website you wish to allow to connect
-  res.header("Access-Control-Allow-Origin", "*");
-
-  res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
-
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
-  );
-
-  // Pass to next layer of middleware
-  next();
-});
+app.options("*", cors());
 
 app.get("/", async (req, res) => {
   const { web_url } = req.body;
