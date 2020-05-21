@@ -2,7 +2,7 @@ const puppeteer = require("puppeteer");
 
 async function scrapeRecipe(url) {
   const browser = await puppeteer.launch({
-    args: ["--no-sandbox", "--disable-setuid-sandbox"]
+    args: ["--no-sandbox", "--disable-setuid-sandbox", "--disable-web-security"]
   });
   const page = await browser.newPage();
   await page.goto(url);
