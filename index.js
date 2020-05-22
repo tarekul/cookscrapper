@@ -1,6 +1,8 @@
 const app = require("express")();
 const bodyParser = require("body-parser");
 
+const cors = require("cors");
+app.options("*", cors());
 const { scrapeRecipe } = require("./scrapper");
 const { cheerioScrape } = require("./webScrapper");
 //parse application/x-www-form-urlencoded
@@ -8,9 +10,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 //parse application/json
 app.use(bodyParser.json());
 
-const cors = require("cors");
 app.use(cors());
-//app.options("*", cors());
 
 app.get("/", async (req, res) => {
   const { web_url } = req.body;
