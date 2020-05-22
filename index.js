@@ -10,7 +10,7 @@ app.use(bodyParser.json());
 
 const cors = require("cors");
 app.use(cors());
-app.options("*", cors());
+//app.options("*", cors());
 
 app.get("/", async (req, res) => {
   const { web_url } = req.body;
